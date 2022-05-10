@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Menu, Slider, Checkbox, Radio } from "antd";
-import {
-  DollarOutlined,
-  DownSquareOutlined,
-  StarOutlined,
-} from "@ant-design/icons";
-
 import {
   getProductsByCount,
   fetchProductsByFilter,
 } from "../functions/product";
 import { getCategories } from "../functions/category";
 import { getSubs } from "../functions/sub";
+import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
+import { Menu, Slider, Checkbox, Radio } from "antd";
+import {
+  DollarOutlined,
+  DownSquareOutlined,
+  StarOutlined,
+} from "@ant-design/icons";
 import Star from "../components/forms/Star";
 
-const { SubMenu } = Menu;
+const { SubMenu, ItemGroup } = Menu;
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -76,6 +75,9 @@ const Shop = () => {
   useEffect(() => {
     const delayed = setTimeout(() => {
       fetchProducts({ query: text });
+      if (!text) {
+        loadAllProducts();
+      }
     }, 300);
     return () => clearTimeout(delayed);
   }, [text]);
