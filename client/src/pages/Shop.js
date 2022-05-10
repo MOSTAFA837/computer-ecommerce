@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
-import {
-  getProductsByCount,
-  fetchProductsByFilter,
-} from "../functions/product";
-import { getCategories } from "../functions/category";
-import { getSubs } from "../functions/sub";
 import { useSelector, useDispatch } from "react-redux";
-import ProductCard from "../components/cards/ProductCard";
 import { Menu, Slider, Checkbox, Radio } from "antd";
 import {
   DollarOutlined,
   DownSquareOutlined,
   StarOutlined,
 } from "@ant-design/icons";
+
+import {
+  getProductsByCount,
+  fetchProductsByFilter,
+} from "../functions/product";
+import { getCategories } from "../functions/category";
+import { getSubs } from "../functions/sub";
+import ProductCard from "../components/cards/ProductCard";
 import Star from "../components/forms/Star";
 
-const { SubMenu, ItemGroup } = Menu;
+const { SubMenu } = Menu;
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
